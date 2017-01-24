@@ -24,7 +24,7 @@ RUN chown root.root /etc/opt/thumbnailsvc.cfg && chmod 644 /etc/opt/thumbnailsvc
 
 RUN mkdir -p /opt/thumbnailsvc
 ADD src/ /opt/thumbnailsvc
-chmod +x /opt/thumbnailsvc/thumbnailsvc.py
+RUN chmod +x /opt/thumbnailsvc/thumbnailsvc.py
 
 WORKDIR /opt/thumbnailsvc/
 EXPOSE 8080
