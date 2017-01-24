@@ -26,5 +26,6 @@ RUN mkdir -p /opt/thumbnailsvc
 ADD src/ /opt/thumbnailsvc
 
 WORKDIR /opt/thumbnailsvc/
-CMD ["/opt/thumbnailsvc/thumbnailsvc.py"]
+EXPOSE 8080
 
+CMD ["/opt/thumbnailsvc/thumbnailsvc.py"]
