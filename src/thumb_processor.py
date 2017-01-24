@@ -15,6 +15,9 @@ import tempfile
 class TimeoutError(RuntimeError):
     pass
 
+class CaptureInProgress(Exception):
+    pass
+
 DEFAULT_WAIT_SECONDS = 60
 
 class ProcessorThread(threading.Thread):
@@ -161,4 +164,4 @@ class ThumbProcessor(object):
         if error:
             raise Exception(error)
         i = self._queuecapture(url, outfilename)
-        raise Exception("Capture in progress (len:%d,pos:%d)" % (len(self.queue), i))
+        raise CaptureInProgress("Capture in progress (len:%d,pos:%d)" % (len(self.queue), i))

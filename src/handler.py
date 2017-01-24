@@ -1,6 +1,7 @@
 import os
 import logging
 from BaseHTTPServer import BaseHTTPRequestHandler
+from thumb_processor import CaptureInProgress
 
 class ThumbnailHandler(BaseHTTPRequestHandler):
     processor = None
@@ -25,6 +26,8 @@ class ThumbnailHandler(BaseHTTPRequestHandler):
                     self.wfile.write(file.read())
                 finally:
                     file.close()
+            except CaptureInProgress, e:
+                self.send_response(503, str(e))
             except Exception, e:
                 logging.exception(str(e))
                 self.send_response(500, str(e))
